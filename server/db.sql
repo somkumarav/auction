@@ -4,3 +4,13 @@ CREATE TABLE accounts(
   email VARCHAR(255) NOT NULL UNIQUE,
   userpassword VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE product(
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description VARCHAR(500) NOT NULL UNIQUE,
+  baseprice INTEGER NOT NULL,
+  currentprice INTEGER NOT NULL,
+  category VARCHAR(255),
+  image TEXT
+);

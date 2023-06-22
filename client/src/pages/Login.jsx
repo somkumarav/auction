@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 export const Login = () => {
+  const [user, setUser] = useState({});
   const [input, setInput] = useState({});
   const navigate = useNavigate();
 
@@ -11,10 +12,17 @@ export const Login = () => {
     if (!input.email || !input.password) return;
     await axios.post('http://localhost:4000/login', input).then((res) => {
       if (res.data.status === 'error') {
-        console.log(res.data.message);
-      } else {
+        console.log(res.data.data);
+        setUser(res.data.data);
+      } else if (
+        res.data.status === 'success' &&
+        res.data.data.username === 'admin'
+      ) {
         console.log(res.data);
         navigate('/admin');
+      } else {
+        console.log(res.data);
+        navigate('/user', { state: { user } });
       }
     });
   };

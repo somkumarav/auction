@@ -1,0 +1,104 @@
+.admin {
+}
+
+.admin-nav {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.admin-nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.admin-nav-right li {
+  list-style-type: none;
+  margin: 0 20px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.admin-nav button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.admin button:hover,
+.admin a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+/* main */
+
+.admin-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-body-container {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.admin-body-container-element {
+  width: 400px;
+  height: 300px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px #aaaaaa;
+  padding: 10px;
+}
+
+.admin-body-container-element:hover {
+  cursor: pointer;
+}
+
+.admin-body-container-element img {
+  height: 200px;
+  width: 200px;
+}
+
+/* add */
+.admin-add-body {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-add-body form {
+  width: 30%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-add-body form input {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #aaaaaa;
+}
+
+.admin-add-body form button {
+  background-color: #2e5cb6;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

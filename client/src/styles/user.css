@@ -1,0 +1,30 @@
+.bid {
+  height: 90vh;
+}
+
+.bid-container {
+  height: 500px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bid-container-left {
+  width: 50%;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+.bid-container-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.bid-container-left img {
+  width: 200px;
+  height: auto;
+}
