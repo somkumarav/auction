@@ -1,21 +1,26 @@
-export const AdminNav = () => {
-  const { user } = useAuth();
-  console.log(user);
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../auth';
+
+export const UserNav = () => {
+  const { user, logOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logOut();
+    navigate('/login');
+  };
 
   return (
     <div className="admin-nav">
       <div className="admin-nav-left">
-        <h1>User</h1>
+        <h1>Welcome, {user.username}</h1>
       </div>
       <div className="admin-nav-right">
         <li>
           <Link to="/user">Home</Link>
         </li>
         <li>
-          <Link to="/adminadd">add product</Link>
-        </li>
-        <li>
-          <button>Logout</button>
+          <button onClick={handleLogout}>Logout</button>
         </li>
       </div>
     </div>

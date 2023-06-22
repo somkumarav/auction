@@ -8,11 +8,18 @@ export const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!input.username || !input.email || !input.password) return;
-    const response = await axios.post('http://localhost:4000/register', input);
+    await axios
+      .post('http://localhost:4000/register', input)
+      .then(() => {
+        setInput({ username: '', email: '', password: '' });
+      })
+      .catch((err) => {
+        setInput({ username: '', email: '', password: '' });
+      });
   };
 
   return (
-    <div>
+    <div className="register">
       <h1>Register</h1>
       <form action="submit" onSubmit={handleSubmit}>
         <input

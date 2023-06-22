@@ -28,6 +28,10 @@ io.on('connection', (socket) => {
   socket.on('place_bid', (data) => {
     socket.broadcast.emit('rec_bid', data);
   });
+
+  socket.on('start_auction', (data) => {
+    socket.broadcast.emit('rec_start', data);
+  });
 });
 
 server.listen(4000, () => {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AdminNav } from './AdminNav';
 import axios from 'axios';
+import io from 'socket.io-client';
 
 export const Admin = () => {
   const [products, setProducts] = useState([]);
@@ -12,6 +13,13 @@ export const Admin = () => {
     };
     fetch();
   }, [setProducts]);
+
+  const socket = io.connect('http://localhost:4000');
+
+  const startAuction = (product) => {
+    socket.emit('start_auction', { product: product.id });
+  };
+
   return (
     <div className="admin">
       <AdminNav />
@@ -22,6 +30,13 @@ export const Admin = () => {
               <img src={product.image} />
               <h2>{product.name}</h2>
               <p>base price: ₹{product.currentprice}</p>
+              <button
+                onClick={() => {
+                  startAuction(product);
+                }}
+              >
+                start auction
+              </button>
             </div>
           ))}
         </div>

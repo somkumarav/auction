@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { UserNav } from './UserNav';
 
 export const User = () => {
-  const { state } = useLocation();
   const [products, setProducts] = useState([]);
-  console.log(state.user);
 
   useEffect(() => {
     const fetch = async () => {
@@ -18,6 +17,7 @@ export const User = () => {
 
   return (
     <div className="admin">
+      <UserNav />
       <div className="admin-body">
         <div className="admin-body-container">
           {products.map((product) => (
@@ -25,7 +25,7 @@ export const User = () => {
               key={product.id}
               className="admin-body-container-element"
               to="/user/product"
-              state={{ product, user: state.user }}
+              state={{ product }}
             >
               <img src={product.image} />
               <h2>{product.name}</h2>

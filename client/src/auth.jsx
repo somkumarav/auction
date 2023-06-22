@@ -1,20 +1,22 @@
 import { useState, createContext, useContext, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  console.log('hello');
 
-  // useEffect(() => {
-  //   const user = JSON.parse(localStorage.getItem('auction_user'));
-  //   if (user) {
-  //     setUser(user);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('auction_user'));
+    if (user) {
+      setUser(user);
+    }
+  }, []);
 
   const logIn = (_user) => {
     console.log(_user);
+    localStorage.setItem('auction_user', JSON.stringify(_user));
     setUser(_user);
   };
   const logOut = () => {
@@ -32,21 +34,21 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-export const PrivateRoute = ({ children }) => {
+export const ProtectedRoute = () => {
   const { user } = useAuth();
   if (!user) {
     return <Navigate to="/login" />;
   }
-  return children;
+  return <Outlet />;
 };
 
-export const AdminRoute = ({ children }) => {
+export const VoterRoute = () => {
   const { user } = useAuth();
   if (!user) {
     return <Navigate to="/login" />;
   }
-  if (user && user.role !== 'admin') {
+  if (user && user.role !== 'voter') {
     return <Navigate to="/login" />;
   }
-  return children;
+  return <Outlet />;
 };

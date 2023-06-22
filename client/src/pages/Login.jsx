@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../auth';
 
 export const Login = () => {
+  const { logIn } = useAuth();
   const [user, setUser] = useState({});
   const [input, setInput] = useState({});
   const navigate = useNavigate();
@@ -13,22 +15,23 @@ export const Login = () => {
     await axios.post('http://localhost:4000/login', input).then((res) => {
       if (res.data.status === 'error') {
         console.log(res.data.data);
-        setUser(res.data.data);
       } else if (
         res.data.status === 'success' &&
         res.data.data.username === 'admin'
       ) {
         console.log(res.data);
+        logIn(res.data.data);
         navigate('/admin');
       } else {
         console.log(res.data);
+        logIn(res.data.data);
         navigate('/user', { state: { user } });
       }
     });
   };
 
   return (
-    <div>
+    <div className="login">
       <h1>Login</h1>
       <form action="submit" onSubmit={handleSubmit}>
         <input
