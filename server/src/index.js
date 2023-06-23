@@ -6,6 +6,7 @@ const { Server } = require('socket.io');
 
 const user = require('./Routes/User');
 const product = require('./Routes/Product');
+const pool = require('./db');
 
 app.use(express.json());
 app.use(cors());
@@ -30,7 +31,17 @@ io.on('connection', (socket) => {
   });
 
   socket.on('start_auction', (data) => {
+    console.log('hello');
     socket.broadcast.emit('rec_start', data);
+  });
+
+  socket.on('end_auction', (data) => {
+    socket.broadcast.emit('rec_end', data);
+  });
+
+  socket.on('delete_auction', (data) => {
+    socket.broadcast.emit('rec_delete', data);
+    pool.query('DELETE FROM product WHERE id = $1', [data.id]);
   });
 });
 

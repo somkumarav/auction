@@ -20,6 +20,9 @@ export const UserNav = () => {
           <Link to="/user">Home</Link>
         </li>
         <li>
+          <Link to="/user/help">help</Link>
+        </li>
+        <li>
           <button onClick={handleLogout}>Logout</button>
         </li>
       </div>

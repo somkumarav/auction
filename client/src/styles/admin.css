@@ -54,7 +54,7 @@ a {
 
 .admin-body-container-element {
   width: 400px;
-  height: 300px;
+  height: 320px;
   border-radius: 10px;
   box-shadow: 2px 2px 10px #aaaaaa;
   padding: 10px;
@@ -62,6 +62,23 @@ a {
 
 .admin-body-container-element:hover {
   cursor: pointer;
+}
+
+.admin-body-container-element button {
+  background-color: #2e5cb6;
+  color: #ffffff;
+  margin: 5px;
+  border: none;
+  font-size: 16px;
+  padding: 7px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.admin-body-container-element button:hover {
+  background-color: #1e3a7b;
+  text-decoration: none;
+  color: #ffffff;
 }
 
 .admin-body-container-element img {

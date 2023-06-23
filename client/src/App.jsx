@@ -10,6 +10,7 @@ import { Admin } from './pages/admin/Admin';
 import { AddItem } from './pages/admin/AddItem';
 import { User } from './pages/user/User';
 import { Bid } from './pages/user/Bid';
+import { Help } from './pages/user/Help';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
 
         <Route path="/user" element={<User />} />
         <Route app path="/user/product" element={<Bid />} />
+        <Route path="/user/help" element={<Help />} />
       </Routes>
     </div>
   );
